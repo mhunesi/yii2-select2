@@ -117,6 +117,14 @@ class Select2Widget extends InputWidget
      */
     protected function registerBundle(View $view)
     {
-        Select2Asset::register($view);
+        $lang = substr(ArrayHelper::getValue($this->clientOptions,'language','en'),0,2);
+
+        $this->clientOptions['language'] = $lang;
+
+        $assetBundle = Select2Asset::register($view);
+
+        $view->registerJsFile($assetBundle->baseUrl . '/js/i18n/'.$lang.'.js',[
+            'depends' => [Select2Asset::className()]
+        ]);
     }
 }

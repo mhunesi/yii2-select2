@@ -83,3 +83,31 @@ Once the extension is installed, simply use it in your code by  :
     ) ?>
 ```
 
+
+``` php
+<?= \mhunesi\select2\Select2Widget::widget([
+    'id' => 'accounts-select',
+    'name' => 'accounts',
+    'options' => [
+        'class' => 'w-100',
+        'multiple' => false
+    ],
+    'clientOptions' => [
+        'placeholder' => 'Account select..',
+        'allowClear' => true,
+        'drops' => 'up',
+        'ajax' => [
+            'url' => '/banking/accounts/search',
+            'dataType' => 'json',
+            'minimumInputLength' => '2',
+            'beforeSend' => false,
+            'complete' => false,
+            'cache' => true,
+            'error' => true,
+            'delay' => 250,
+        ],
+        'language' => 'tr'
+    ],
+]) ?>
+```
+
